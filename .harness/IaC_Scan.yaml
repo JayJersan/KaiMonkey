@@ -1,0 +1,36 @@
+pipeline:
+  name: IaC Scan
+  identifier: IaC_Scan
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Gitrepos
+        repoName: kaimonkey
+        build: <+input>
+  stages:
+    - stage:
+        name: IaC Scan
+        identifier: IaC_Scan
+        description: Perform a scan of the IaC files in the repository
+        type: Custom
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Bash
+                    command: docker build -t ${repository_name}:${tag} -f ${dockerfile_context} .
+        tags: {}
