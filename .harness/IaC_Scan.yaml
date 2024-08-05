@@ -55,3 +55,28 @@ pipeline:
             description: Set to "0" to disable. Set to "1" to fail the pipeline when a issue is found
             required: true
             value: 0
+    - stage:
+        name: test
+        identifier: test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
+                  spec:
+                    connectorRef: My_connector
+                    image: jayjersan/harness-test:v1
+                    settings:
+                      path: /harness/
+  allowStageExecutions: true
