@@ -32,5 +32,26 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Bash
-                    command: docker build -t ${repository_name}:${tag} -f ${dockerfile_context} .
+                    command: |-
+                      if [ "${ FailOnIssues }" -eq 0 ];then
+                        fail='--soft-fail'
+                      else
+                        fail=''
+                      fi
+                      if [ -d ${ ScanTarget }]; then
+                        checkov -d "${ ScanTarget }" --compact --quiet -o json --output-file-path ./results "${ fail }"
+                      else
+                        checkov -f "${ ScanTarget }" --compact --quiet -o json --output-file-path ./results "${ fail }"
+                      fi
         tags: {}
+        variables:
+          - name: ScanTarget
+            type: String
+            description: Specify a directory with the IaC files to be scanned or provide the full path to the files to be scanned, separated by spaces
+            required: true
+            value: ./
+          - name: FailOnIssues
+            type: Number
+            description: Set to "0" to disable. Set to "1" to fail the pipeline when a issue is found
+            required: true
+            value: 0
