@@ -72,11 +72,17 @@ pipeline:
             steps:
               - step:
                   type: Plugin
-                  name: Plugin_1
+                  name: AccuKnox_IaC
                   identifier: Plugin_1
                   spec:
                     connectorRef: My_connector
-                    image: jayjersan/harness-test:v1
+                    image: jayjersan/harness-test:v2
                     settings:
-                      path: /harness/
+                      directory: /harness
+                      repo_id: https://harness.com/user/demo
+                      branch: main
+                      endpoint: cspm.demo.accuknox.com
+                      tenant_id: "167"
+                      label: test
+                      hard_fail: "1"
   allowStageExecutions: true
