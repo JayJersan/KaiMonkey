@@ -85,4 +85,5 @@ pipeline:
                       tenant_id: "167"
                       label: test
                       hard_fail: "1"
+                      token: <+input>
   allowStageExecutions: true
