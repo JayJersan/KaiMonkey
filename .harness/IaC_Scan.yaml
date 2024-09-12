@@ -12,51 +12,7 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: IaC Scan
-        identifier: IaC_Scan
-        description: Perform a scan of the IaC files in the repository
-        type: Custom
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Bash
-                    command: |-
-                      if [ "${ FailOnIssues }" -eq 0 ];then
-                        fail='--soft-fail'
-                      else
-                        fail=''
-                      fi
-                      if [ -d ${ ScanTarget }]; then
-                        checkov -d "${ ScanTarget }" --compact --quiet -o json --output-file-path ./results "${ fail }"
-                      else
-                        checkov -f "${ ScanTarget }" --compact --quiet -o json --output-file-path ./results "${ fail }"
-                      fi
-        tags: {}
-        variables:
-          - name: ScanTarget
-            type: String
-            description: Specify a directory with the IaC files to be scanned or provide the full path to the files to be scanned, separated by spaces
-            required: true
-            value: ./
-          - name: FailOnIssues
-            type: Number
-            description: Set to "0" to disable. Set to "1" to fail the pipeline when a issue is found
-            required: true
-            value: 0
-    - stage:
-        name: test
+        name: IaC_Scan
         identifier: test
         description: ""
         type: CI
@@ -85,5 +41,8 @@ pipeline:
                       tenant_id: "167"
                       label: test
                       hard_fail: "1"
-                      token: <+input>
+                      token: <+secrets.getValue("AK_Token")>
+          caching:
+            enabled: false
+            paths: []
   allowStageExecutions: true
