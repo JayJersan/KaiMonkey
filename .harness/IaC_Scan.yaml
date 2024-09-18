@@ -32,7 +32,7 @@ pipeline:
                   identifier: Plugin_1
                   spec:
                     connectorRef: My_connector
-                    image: jayjersan/harness-test:v2
+                    image: accuknox/harness-iac-plugin:v1
                     settings:
                       directory: /harness
                       repo_id: https://harness.com/user/demo
