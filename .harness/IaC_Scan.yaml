@@ -34,7 +34,6 @@ pipeline:
                     connectorRef: My_connector
                     image: accuknox/harness-iac-plugin:v1
                     settings:
-                      directory: /harness
                       repo_id: https://harness.com/user/demo
                       branch: main
                       endpoint: cspm.demo.accuknox.com
