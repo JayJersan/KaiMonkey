@@ -40,7 +40,6 @@ pipeline:
                       endpoint: cspm.demo.accuknox.com
                       tenant_id: "167"
                       label: test
-                      hard_fail: "1"
                       token: <+secrets.getValue("AK_Token")>
           caching:
             enabled: false
