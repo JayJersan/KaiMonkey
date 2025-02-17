@@ -36,10 +36,10 @@ pipeline:
                     settings:
                       repo_id: https://harness.com/user/demo
                       branch: main
-                      endpoint: cspm.demo.accuknox.com
-                      tenant_id: "167"
-                      label: test
-                      token: <+secrets.getValue("AK_Token")>
+                      endpoint: http://174.138.123.212:5000
+                      tenant_id: "2"
+                      label: IAC
+                      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQyMzgyOTI0LCJqdGkiOiJjODY1Njc3OTdiM2U0MjgxYjFlYmY2YTZjZGVjNTU1NiIsImlzcyI6ImNzcG0uaW50ZXJuYWwudGVzdC5jb20ifQ.dymsQjHYUsk-mMfLLCTmFbNtth790F-Y6ODxqzqMyUqCSBTPdc1U7FeMNcOcOvc417qeFVA9eJjpmMfdxfgElQW3IGqo2TupU44zr99ZW00LJ5c-PvAHYyYjrFoyA8vLpUouOGlf0CQ4h3E0E9vslY19_IcBQWRjUYrKOLkm16WzawmSLFMgUgDI5IDf-CHsTRfQ83xNfNuxL5asN9yEkHmWkJAbpIYPjXBeqc1P8qc6LNMBctvHiZn_VewzfuuedEQTbIfUB0iXUJnL0mZwXOc-NHthQ5GYc_GS_sPP6r9VPdbeVVpAI4fk64OeVllgXRBDO54MIQiQ1B1d-L7DVA
           caching:
             enabled: false
             paths: []
