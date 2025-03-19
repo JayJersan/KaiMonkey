@@ -174,7 +174,7 @@ resource "aws_internet_gateway" "demo-igw" {
 #subnet
 resource "aws_subnet" "subnet-1" {
   assign_ipv6_address_on_creation = "false"
-  cidr_block                      = "10.10.10.0/24"
+  cidr_block                      = "10.10.20.0/24"
   map_public_ip_on_launch         = "false"
 
   tags = {
